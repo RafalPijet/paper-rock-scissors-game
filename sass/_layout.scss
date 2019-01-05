@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $grey;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+button {
+  border-radius: 10px;
+  box-shadow: 8px 8px 5px $black;
+  cursor: pointer;
+  height: 130px;
+  transition-duration: .3s;
+  width: 130px;
+
+  &:active {
+    box-shadow: none;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 700px;
+  position: relative;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-1 {flex: 8.333%;}
+.col-2 {flex: 16.667%;}
+.col-3 {flex: 25%;}
+.col-4 {flex: 33.333%;}
+.col-5 {flex: 41.667%;}
+.col-6 {flex: 50%;}
+.col-7 {flex: 58.333%;}
+.col-8 {flex: 66.667%;}
+.col-9 {flex: 75%;}
+.col-10 {flex: 83.333%;}
+.col-11 {flex: 91.667%;}
+.col-12 {flex: 100%;}
+
+.hidden {
+  visibility: hidden;
+}
+
+.show-face {
+  display: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.flex-around {
+  justify-content: space-around;
+}
+
+.main {
+  background-image: url("../images/Papier-Kamien-Nozyce.jpg");
+  background-size: cover;
+  border: 1px solid $white;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px $black;
+  left: calc(100vw / 4);
+  margin: 0 auto;
+  position: absolute;
+  top: calc(100vh / 4);
+
+  .layer-front {
+    h1 {
+      color: $white;
+      font-size: 22px;
+      text-shadow: 2px 2px 2px $black;
+    }
+
+    h2 {
+      color: $orange;
+      height: 30px;
+      margin-top: 50px;
+    }
+
+    p {
+      color: $green;
+      font-size: 24px;
+    }
+
+    .faces {
+      height: 130px;
+      margin: 20px;
+      width: 130px;
+
+
+      img {
+        height: 130px;
+        width: 130px;
+      }
+    }
+
+    .buttons {
+      width: 100vw;
+
+      button {
+        cursor: pointer;
+      }
+
+      button:nth-of-type(1) {
+        background-image: url("../images/paper.jpg");
+        background-size: cover;
+      }
+
+      button:nth-of-type(2) {
+        background-image: url("../images/stone.jpg");
+        background-size: cover;
+      }
+
+      button:nth-of-type(3) {
+        background-image: url("../images/shears.jpg");
+        background-size: cover;
+      }
+    }
+
+  }
+}
+
+#start {
+  background-color: $grey-light;
+  font-size: 23px;
+  height: 50px;
+  margin: 0 20px 20px;
+}
