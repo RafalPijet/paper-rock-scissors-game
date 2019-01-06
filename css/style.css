@@ -6,7 +6,9 @@ body {
   background-color: #747d8c;
   margin: 0;
   padding: 0;
-  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
 }
 
 button {
@@ -39,61 +41,73 @@ button:active {
 .col-1 {
   -ms-flex: 8.333%;
       flex: 8.333%;
+  max-width: 8.333%;
 }
 
 .col-2 {
   -ms-flex: 16.667%;
       flex: 16.667%;
+  max-width: 16.667%;
 }
 
 .col-3 {
   -ms-flex: 25%;
       flex: 25%;
+  max-width: 25%;
 }
 
 .col-4 {
   -ms-flex: 33.333%;
       flex: 33.333%;
+  max-width: 33.333%;
 }
 
 .col-5 {
   -ms-flex: 41.667%;
       flex: 41.667%;
+  max-width: 41.667%;
 }
 
 .col-6 {
   -ms-flex: 50%;
       flex: 50%;
+  max-width: 50%;
 }
 
 .col-7 {
   -ms-flex: 58.333%;
       flex: 58.333%;
+  max-width: 58.333%;
 }
 
 .col-8 {
   -ms-flex: 66.667%;
       flex: 66.667%;
+  max-width: 66.667%;
 }
 
 .col-9 {
   -ms-flex: 75%;
       flex: 75%;
+  max-width: 75%;
 }
 
 .col-10 {
   -ms-flex: 83.333%;
       flex: 83.333%;
+  max-width: 83.333%;
 }
 
 .col-11 {
   -ms-flex: 91.667%;
       flex: 91.667%;
+  max-width: 91.667%;
 }
 
 .col-12 {
   -ms-flex: 100%;
       flex: 100%;
+  max-width: 100%;
 }
 
 .hidden {
@@ -118,16 +132,28 @@ button:active {
       justify-content: space-around;
 }
 
+.font-20 {
+  font-size: 20px;
+}
+
+.back-enter-modal {
+  background-image: url("../images/back-enter-modal.png");
+  background-size: 35%;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
 .main {
   background-image: url("../images/Papier-Kamien-Nozyce.jpg");
   background-size: cover;
   border: 1px solid #fff;
   border-radius: 10px;
   box-shadow: 5px 5px 5px #000;
-  left: calc(100vw / 4);
-  margin: 0 auto;
-  position: absolute;
-  top: calc(100vh / 4);
+  margin: auto;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .main .layer-front h1 {
@@ -189,6 +215,80 @@ button:active {
 }
 
 /* Components */
+.component__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  overflow: auto;
+  padding: 30px;
+  display: none;
+}
+
+.component__overlay.show {
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.component__modal {
+  max-width: 600px;
+  margin: auto;
+  background-color: #8599A2;
+  position: relative;
+  padding: 30px;
+  display: none;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #000;
+}
+
+.component__modal.show {
+  display: block;
+}
+
+.component__modal .btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.component__take-data .field {
+  padding: 10px;
+}
+
+.component__take-data .field input {
+  background-color: inherit;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding-left: 10px;
+  outline: none;
+}
+
+.component__take-data .field .number {
+  width: 142px;
+}
+
+.component__take-data .submit {
+  width: 150px;
+  height: 50px;
+  background-color: #ffa502;
+  border: none;
+  margin-top: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  outline: none;
+}
+
 /* Sections */
 /* Pages / Views */
 /*# sourceMappingURL=style.css.map */

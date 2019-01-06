@@ -1,0 +1,28 @@
+.component__take-data {
+  .field {
+    padding: 10px;
+
+    input {
+      background-color: inherit;
+      border: 1px solid $white;
+      border-radius: 10px;
+      padding-left: 10px;
+      outline: none;
+    }
+
+    .number {
+      width: 142px;
+    }
+  }
+
+  .submit {
+    width: 150px;
+    height: 50px;
+    background-color: $orange;
+    border: none;
+    margin-top: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+  }
+}

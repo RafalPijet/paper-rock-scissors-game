@@ -24,13 +24,29 @@
             </div>
             <h1 class="col-12" id="output">select the button</h1>
             <div class="buttons row flex-around">
-                <button id="first"></button>
-                <button id="second"></button>
-                <button id="third"></button>
+                <button class="player-move" id="first" data-move="paper"></button>
+                <button class="player-move" id="second" data-move="stone"></button>
+                <button class="player-move" id="third" data-move="shears"></button>
             </div>
             <p class="col-12" id="log-info">Can you play with me? Push the button</p>
             <button class="col-6" id="start">NEW GAME</button>
         </div>
+    </div>
+</section>
+<section class="component__overlay" id="overlay">
+    <div class="component__modal back-enter-modal" id="player-data">
+        <div class="btn-close js--close-modal">X</div>
+        <form class="component__take-data row flex-center">
+            <div class="field row col-12 flex-center">
+                <label class="font-20" for="player-name">Enter your name:</label>
+                <input class="font-20" type="text" name="player-name" id="player-name" required="required">
+            </div>
+            <div class="field row col-12 flex-center">
+                <label class="font-20" for="player-rounds">Enter quantity of round:</label>
+                <input class="font-20 number" type="number" name="rounds" id="player-rounds" required="required" min="1" max="100">
+            </div>
+            <button class="submit" type="button" id="submit-button">Submit</button>
+        </form>
     </div>
 </section>
 <script src="js/script.js"></script>

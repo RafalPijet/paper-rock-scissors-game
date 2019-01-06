@@ -1,114 +1,126 @@
 "use strict";
 (function () {
-    var info = document.getElementById("output");
-    var score = document.getElementById("result");
-    var myLog = document.getElementById("log-info")
-    var buttonShears = document.getElementById("first");
-    var buttonStone = document.getElementById("second");
-    var buttonPaper = document.getElementById("third");
-    var buttonStart = document.getElementById("start");
-    var faceNormal = document.getElementById("face-normal");
-    var faceNoHappy = document.getElementById("face-no-happy");
-    var faceLost = document.getElementById("face-lost");
-    var faceWin = document.getElementById("face-win");
-    var faceStart = document.getElementById("face-start");
-    var elements = ["paper", "stone", "shears"];
-    var roundCounter;
-    var userName;
-    var userCounter;
-    var compCounter;
-    var check = false;
+    var params = {
+        info: document.getElementById("output"),
+        score: document.getElementById("result"),
+        myLog: document.getElementById("log-info"),
+        buttonStart: document.getElementById("start"),
+        buttonSubmit: document.getElementById("submit-button"),
+        faceNormal: document.getElementById("face-normal"),
+        faceNoHappy: document.getElementById("face-no-happy"),
+        faceLost: document.getElementById("face-lost"),
+        faceWin: document.getElementById("face-win"),
+        faceStart: document.getElementById("face-start"),
+        choiceButtons: document.querySelectorAll(".player-move"),
+        closeElements: document.querySelectorAll(".js--close-modal"),
+        elements: ["paper", "stone", "shears"],
+        roundCounter: null,
+        userName: null,
+        userCounter: null,
+        compCounter: null,
+        check: false
+    };
 
     var prepareGame = function() {
-        userCounter = 0;
-        compCounter = 0;
-        check = true;
-        userName = window.prompt("Enter your name:");
-        roundCounter = window.prompt("Enter quantity of round:");
-        buttonStart.classList.toggle("hidden");
-        resetFaces();
-        showScore();
-        info.innerHTML = "select the button";
+        params.userCounter = 0;
+        params.compCounter = 0;
+        params.check = true;
+        openModal("#player-data");
+    }
+    
+    function confirmPlayerData() {
+        params.userName = document.getElementById("player-name").value;
+        params.roundCounter = parseInt(document.getElementById("player-rounds").value);
+
+        if (params.userName.length > 0 && params.roundCounter > 0) {
+            params.buttonStart.classList.toggle("hidden");
+            resetFaces();
+            showScore();
+            params.info.innerHTML = "select the button";
+            closeModal();
+        } else {
+            prepareGame();
+        }
     }
 
     var resetFaces = function() {
-        faceNormal.classList.add("show-face");
-        faceLost.classList.add("show-face");
-        faceWin.classList.add("show-face");
-        faceNoHappy.classList.add("show-face");
+        params.faceNormal.classList.add("show-face");
+        params.faceLost.classList.add("show-face");
+        params.faceWin.classList.add("show-face");
+        params.faceNoHappy.classList.add("show-face");
     }
 
     var showLog = function(info) {
-        myLog.innerHTML = info;
+        params.myLog.innerHTML = info;
     }
 
     var endGame = function() {
-        check = false;
-        buttonStart.classList.toggle("hidden");
+        params.check = false;
+        params.buttonStart.classList.toggle("hidden");
 
-        if (userCounter > compCounter) {
-            info.innerHTML = "YOU WON THE ENTIRE GAME!!!";
+        if (params.userCounter > params.compCounter) {
+            params.info.innerHTML = "YOU WON THE ENTIRE GAME!!!";
             resetFaces();
-            faceLost.classList.remove("show-face");
-        } else if (userCounter < compCounter) {
-            info.innerHTML = "YOU LOST THE ENTIRE GAME!!!";
+            params.faceLost.classList.remove("show-face");
+        } else if (params.userCounter < params.compCounter) {
+            params.info.innerHTML = "YOU LOST THE ENTIRE GAME!!!";
             resetFaces();
-            faceWin.classList.remove("show-face");
-        } else if (userCounter == compCounter) {
-            info.innerHTML = "DRAW";
+            params.faceWin.classList.remove("show-face");
+        } else if (params.userCounter === params.compCounter) {
+            params.info.innerHTML = "DRAW";
             resetFaces();
-            faceNormal.classList.remove("show-face");
+            params.faceNormal.classList.remove("show-face");
         }
         showLog("GAME OVER");
     }
 
     var showScore = function() {
-        score.innerHTML = userName + "(" + userCounter + ") vs (" + compCounter + ")Computer";
-        showLog("remaining rounds: <strong>" + roundCounter + "</strong>");
+        params.score.innerHTML = params.userName + "(" + params.userCounter + ") vs (" + params.compCounter + ")Computer";
+        showLog("remaining rounds: <strong>" + params.roundCounter + "</strong>");
     }
 
     var randomCompChoice = function() {
-        return Math.round((Math.random()) * 2);
+        return params.elements[Math.round((Math.random()) * 2)];
     }
 
-    var showInfo = function(userNumber, compNumber, checkScore) {
+    var showInfo = function(userChoice, compChoice, checkScore) {
         var answers = ["you won", "computer won", "draw"];
-        var answer = ": you played " + elements[userNumber].toUpperCase() + ", computer played " + elements[compNumber].
+        var answer = ": you played " + userChoice.toUpperCase() + ", computer played " + compChoice.
         toUpperCase();
 
-        if (checkScore == "you") {
-            info.innerHTML = answers[0].toUpperCase() + answer;
+        if (checkScore === "you") {
+            params.info.innerHTML = answers[0].toUpperCase() + answer;
             resetFaces();
-            faceLost.classList.remove("show-face");
-        } else if (checkScore == "comp") {
-            info.innerHTML = answers[1].toUpperCase() + answer;
+            params.faceLost.classList.remove("show-face");
+        } else if (checkScore === "comp") {
+            params.info.innerHTML = answers[1].toUpperCase() + answer;
             resetFaces();
-            faceWin.classList.remove("show-face");
+            params.faceWin.classList.remove("show-face");
         } else {
-            info.innerHTML = answers[2].toUpperCase() + answer;
+            params.info.innerHTML = answers[2].toUpperCase() + answer;
             resetFaces();
-            faceNoHappy.classList.remove("show-face");
+            params.faceNoHappy.classList.remove("show-face");
         }
     }
 
     var playerMove = function(userChoice) {
         var compChoice = randomCompChoice();
-        faceStart.classList.add("show-face");
+        params.faceStart.classList.add("show-face");
 
         if (userChoice === compChoice) {
             showInfo(userChoice, compChoice, "draw");
-        } else if ((userChoice == 0 && compChoice ==1) ||
-            (userChoice == 1 && compChoice == 2) ||
-            (userChoice == 2 && compChoice == 0)) {
+        } else if ((userChoice === params.elements[2] && compChoice === params.elements[0]) ||
+            (userChoice === params.elements[1] && compChoice === params.elements[2]) ||
+            (userChoice === params.elements[0] && compChoice === params.elements[1])) {
             showInfo(userChoice, compChoice, "you");
-            userCounter ++;
+            params.userCounter ++;
         } else {
             showInfo(userChoice, compChoice, "comp");
-            compCounter ++;
+            params.compCounter ++;
         }
-        roundCounter --;
+        params.roundCounter --;
 
-        if (roundCounter > 0) {
+        if (params.roundCounter > 0) {
             showScore();
         } else {
             showScore();
@@ -116,39 +128,58 @@
         }
     }
 
-    buttonShears.addEventListener("click", function() {
+    function openModal(modal) {
+        document.querySelectorAll('#overlay > *').forEach(function(modal) {
+            modal.classList.remove('show')
+        })
+        document.querySelector('#overlay').classList.add('show')
+        document.querySelector(modal).classList.add('show')
+    }
 
-        if (check) {
-            playerMove(0);
-        } else {
-            showLog("Game over, please press the new game button!");
-        }
-    });
+    function closeModal() {
+        document.getElementById("overlay").classList.remove("show");
+    }
 
-    buttonStone.addEventListener("click", function() {
+    for (var i = 0; i < params.choiceButtons.length; i++) {
+        params.choiceButtons[i].addEventListener("click", function() {
+            var userChoice = this.getAttribute("data-move");
+            if (params.check) {
+                playerMove(userChoice);
+            } else {
+                showLog("Game over, please press the new game button!");
+            }
+        })
+    }
 
-        if (check) {
-            playerMove(1);
-        } else {
-            showLog("Game over, please press the new game button!");
-        }
-    });
+    for (var i = 0; i < params.closeElements.length; i++) {
+        params.closeElements[i].addEventListener("click", function() {
+            closeModal();
+        })
+    }
 
-    buttonPaper.addEventListener("click", function() {
-
-        if (check) {
-            playerMove(2);
-        } else {
-            showLog("Game over, please press the new game button!");
-        }
-    });
-
-    buttonStart.addEventListener("click", function() {
+    params.buttonStart.addEventListener("click", function() {
         prepareGame();
     })
 
-    buttonStart.addEventListener("mouseenter", function() {
+    params.buttonStart.addEventListener("mouseenter", function() {
         resetFaces();
-        faceStart.classList.remove("show-face");
+        params.faceStart.classList.remove("show-face");
     })
+
+    params.buttonSubmit.addEventListener("click", function() {
+        confirmPlayerData();
+    })
+
+    document.querySelector("#overlay").addEventListener("click", function(event) {
+        if (event.target === this) {
+            closeModal();
+        }
+    })
+
+    document.addEventListener('keyup', function(e) {
+        if(e.keyCode === 27) {
+            closeModal()
+        }
+    })
+
 })();
