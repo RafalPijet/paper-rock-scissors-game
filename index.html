@@ -40,7 +40,7 @@
         <form class="component__take-data row flex-center">
             <div class="field row col-12 flex-center">
                 <label class="font-20" for="player-name">Enter your name:</label>
-                <input class="font-20" type="text" name="player-name" id="player-name" required="required">
+                <input class="font-20" type="text" name="player-name" id="player-name" required="required" maxlength="10">
             </div>
             <div class="field row col-12 flex-center">
                 <label class="font-20" for="player-rounds">Enter quantity of round:</label>
@@ -51,8 +51,10 @@
     </div>
     <div class="component__modal" id="summaryOfResult">
         <div class="btn-close js--close-modal">X</div>
-        <div class="summary row justify-center">
-            <h1 class="col-12 text-center" id="output-modal"></h1>
+        <div class="summary">
+            <div class="top-line row col-12">
+                <h1 class="col-12 text-center" id="output-modal"></h1>
+            </div>
             <table class="col-12">
                 <thead>
                 <tr>

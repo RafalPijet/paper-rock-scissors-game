@@ -25,7 +25,7 @@ button {
 
 .container {
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 800px;
   position: relative;
   width: 100%;
 }
@@ -199,13 +199,19 @@ button {
   display: block;
   max-height: calc(100vh / 2);
   height: 100%;
-  overflow-y: auto;
+  overflow: auto;
+  position: relative;
+
+  .top-line {
+    position: fixed;
+  }
 
   h1 {
     background-color: $grey-back;
-    position: fixed;
+    //position: fixed;
     margin: 0;
     padding: 10px 0;
+    width: 460px;
     @extend .prop-h1
   }
 
@@ -214,10 +220,15 @@ button {
     height: 100%;
     border-collapse: collapse;
     border-bottom: 1px solid $orange;
-    margin-top: 60px;
+    margin-top: 80px;
 
     thead {
       border-bottom: 1px solid $orange;
+
+      th {
+        padding: 0 10px;
+      }
+
     }
 
     tbody {

@@ -26,7 +26,7 @@ button:active {
 
 .container {
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 800px;
   position: relative;
   width: 100%;
 }
@@ -222,14 +222,19 @@ button:active {
   display: block;
   max-height: calc(100vh / 2);
   height: 100%;
-  overflow-y: auto;
+  overflow: auto;
+  position: relative;
+}
+
+.summary .top-line {
+  position: fixed;
 }
 
 .summary h1 {
   background-color: #8599A2;
-  position: fixed;
   margin: 0;
   padding: 10px 0;
+  width: 460px;
 }
 
 .summary table {
@@ -237,11 +242,15 @@ button:active {
   height: 100%;
   border-collapse: collapse;
   border-bottom: 1px solid #ffa502;
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
 .summary table thead {
   border-bottom: 1px solid #ffa502;
+}
+
+.summary table thead th {
+  padding: 0 10px;
 }
 
 .summary table tbody tr td {
