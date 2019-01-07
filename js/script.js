@@ -26,7 +26,7 @@
         check: false
     };
 
-    var prepareGame = function() {
+    function prepareGame() {
         var turnRows = document.querySelectorAll(".turn-row");
         for (var i = 0; i < turnRows.length; i++) {
             params.tableOfSummary.deleteRow(0);
@@ -55,18 +55,18 @@
         }
     }
 
-    var resetFaces = function() {
+    function resetFaces() {
         params.faceNormal.classList.add("show-face");
         params.faceLost.classList.add("show-face");
         params.faceWin.classList.add("show-face");
         params.faceNoHappy.classList.add("show-face");
     }
 
-    var showLog = function(info) {
+    function showLog(info) {
         params.myLog.innerHTML = info;
     }
 
-    var endGame = function() {
+    function endGame() {
         params.check = false;
         params.buttonStart.classList.toggle("hidden");
 
@@ -91,16 +91,16 @@
         showSummary();
     }
 
-    var showScore = function() {
+    function showScore() {
         params.score.innerHTML = params.userName + "(" + params.userCounter + ") vs (" + params.compCounter + ")Computer";
         showLog("remaining rounds: <strong>" + params.roundCounter + "</strong>");
     }
 
-    var randomCompChoice = function() {
+    function randomCompChoice() {
         return params.elements[Math.round((Math.random()) * 2)];
     }
 
-    var showInfo = function(userChoice, compChoice, checkScore) {
+    function showInfo(userChoice, compChoice, checkScore) {
         var answers = ["you won", "computer won", "draw"];
         var answer = ": " + params.userName + " played " + userChoice.toUpperCase() + ", computer played " + compChoice.
         toUpperCase();
@@ -120,7 +120,7 @@
         }
     }
 
-    var playerMove = function(userChoice) {
+    function playerMove(userChoice) {
         var compChoice = randomCompChoice();
         var dataRow = {};
         var userResult = 0;
