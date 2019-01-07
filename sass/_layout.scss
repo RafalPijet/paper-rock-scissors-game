@@ -88,6 +88,10 @@ button {
   visibility: hidden;
 }
 
+.display-off {
+  display: none;
+}
+
 .show-face {
   display: none;
 }
@@ -115,6 +119,12 @@ button {
   background-repeat: no-repeat;
 }
 
+.prop-h1 {
+  color: $white;
+  font-size: 22px;
+  text-shadow: 2px 2px 2px $black;
+}
+
 .main {
   background-image: url("../images/Papier-Kamien-Nozyce.jpg");
   background-size: cover;
@@ -127,9 +137,7 @@ button {
 
   .layer-front {
     h1 {
-      color: $white;
-      font-size: 22px;
-      text-shadow: 2px 2px 2px $black;
+      @extend .prop-h1
     }
 
     h2 {
@@ -178,12 +186,61 @@ button {
       }
     }
 
+    .function-button {
+      background-color: $grey-light;
+      font-size: 23px;
+      height: 50px;
+      margin: 0 20px 20px;
+    }
   }
 }
 
-#start {
-  background-color: $grey-light;
-  font-size: 23px;
-  height: 50px;
-  margin: 0 20px 20px;
+.summary {
+  display: block;
+  max-height: calc(100vh / 2);
+  height: 100%;
+  overflow-y: auto;
+
+  h1 {
+    background-color: $grey-back;
+    position: fixed;
+    margin: 0;
+    padding: 10px 0;
+    @extend .prop-h1
+  }
+
+  table {
+    max-height: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    border-bottom: 1px solid $orange;
+    margin-top: 60px;
+
+    thead {
+      border-bottom: 1px solid $orange;
+    }
+
+    tbody {
+      tr {
+        td {
+          text-align: center;
+        }
+
+        &:hover {
+          background-color: $black;
+          color: $white;
+          cursor: pointer;
+        }
+      }
+
+      tr:last-child {
+        td:last-child {
+          background-color: $orange;
+          color: $white;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }
+

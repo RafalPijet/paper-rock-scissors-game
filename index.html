@@ -22,14 +22,15 @@
                 <img class="show-face" id="face-win" src="images/smile_face.png" alt="sorry">
                 <img class="" id="face-start" src="images/little_smile_face.png" alt="sorry">
             </div>
-            <h1 class="col-12" id="output">select the button</h1>
+            <h1 class="col-12" id="output">SELECT THE BUTTON</h1>
             <div class="buttons row flex-around">
                 <button class="player-move" id="first" data-move="paper"></button>
                 <button class="player-move" id="second" data-move="stone"></button>
                 <button class="player-move" id="third" data-move="shears"></button>
             </div>
             <p class="col-12" id="log-info">Can you play with me? Push the button</p>
-            <button class="col-6" id="start">NEW GAME</button>
+            <button class="function-button col-6" id="start">NEW GAME</button>
+            <button class="function-button col-2 display-off" id="details">Details</button>
         </div>
     </div>
 </section>
@@ -47,6 +48,24 @@
             </div>
             <button class="submit" type="button" id="submit-button">Submit</button>
         </form>
+    </div>
+    <div class="component__modal" id="summaryOfResult">
+        <div class="btn-close js--close-modal">X</div>
+        <div class="summary row justify-center">
+            <h1 class="col-12 text-center" id="output-modal"></h1>
+            <table class="col-12">
+                <thead>
+                <tr>
+                    <th>Turn</th>
+                    <th>User choice</th>
+                    <th>Comp choice</th>
+                    <th>Turn score</th>
+                    <th>Game score</th>
+                </tr>
+                </thead>
+                <tbody class="col-12" id="show-data"></tbody>
+            </table>
+        </div>
     </div>
 </section>
 <script src="js/script.js"></script>
