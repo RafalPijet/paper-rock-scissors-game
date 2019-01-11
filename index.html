@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="paper-stone-shears-game">
+    <meta name="description" content="paper-rock-scissors-game">
     <meta name="author" content="Rafał Pijet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>paper-stone-shears-game</title>
+    <title>paper-rock-scissors-game</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i" rel="stylesheet">
@@ -25,8 +25,8 @@
             <h1 class="col-12" id="output">SELECT THE BUTTON</h1>
             <div class="buttons row flex-around">
                 <button class="player-move" id="first" data-move="paper"></button>
-                <button class="player-move" id="second" data-move="stone"></button>
-                <button class="player-move" id="third" data-move="shears"></button>
+                <button class="player-move" id="second" data-move="rock"></button>
+                <button class="player-move" id="third" data-move="scissors"></button>
             </div>
             <p class="col-12" id="log-info">Can you play with me? Push the button</p>
             <button class="function-button col-6" id="start">NEW GAME</button>
@@ -37,7 +37,7 @@
 <section class="component__overlay" id="overlay">
     <div class="component__modal back-enter-modal" id="player-data">
         <div class="btn-close js--close-modal">X</div>
-        <form class="component__take-data row flex-center">
+        <form class="component__take-data row flex-center" id="data-form">
             <div class="field row col-12 flex-center">
                 <label class="font-20" for="player-name">Enter your name:</label>
                 <input class="font-20" type="text" name="player-name" id="player-name" required="required" maxlength="10">
@@ -46,7 +46,7 @@
                 <label class="font-20" for="player-rounds">Enter quantity of round:</label>
                 <input class="font-20 number" type="number" name="rounds" id="player-rounds" required="required" min="1" max="100">
             </div>
-            <button class="submit" type="button" id="submit-button">Submit</button>
+            <button class="submit" type="submit" id="submit-button">Submit</button>
         </form>
     </div>
     <div class="component__modal" id="summaryOfResult">

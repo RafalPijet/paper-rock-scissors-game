@@ -16,7 +16,7 @@
         tableOfSummary: document.getElementById("show-data"),
         choiceButtons: document.querySelectorAll(".player-move"),
         closeElements: document.querySelectorAll(".js--close-modal"),
-        elements: ["paper", "stone", "shears"],
+        elements: ["paper", "rock", "scissors"],
         progress: [],
         progressCounter: null,
         roundCounter: null,
@@ -227,5 +227,9 @@
         if(e.keyCode === 27) {
             closeModal()
         }
+    })
+
+    document.getElementById("data-form").addEventListener("submit", function(event) {
+        event.preventDefault();
     })
 })();

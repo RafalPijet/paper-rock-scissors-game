@@ -171,17 +171,17 @@ button {
       }
 
       button:nth-of-type(1) {
-        background-image: url("../images/paper.jpg");
+        background-image: url("../images/paper.png");
         background-size: cover;
       }
 
       button:nth-of-type(2) {
-        background-image: url("../images/stone.jpg");
+        background-image: url("../images/rock.png");
         background-size: cover;
       }
 
       button:nth-of-type(3) {
-        background-image: url("../images/shears.jpg");
+        background-image: url("../images/scissors.png");
         background-size: cover;
       }
     }
@@ -208,7 +208,6 @@ button {
 
   h1 {
     background-color: $grey-back;
-    //position: fixed;
     margin: 0;
     padding: 10px 0;
     width: 460px;

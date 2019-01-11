@@ -197,17 +197,17 @@ button:active {
 }
 
 .main .layer-front .buttons button:nth-of-type(1) {
-  background-image: url("../images/paper.jpg");
+  background-image: url("../images/paper.png");
   background-size: cover;
 }
 
 .main .layer-front .buttons button:nth-of-type(2) {
-  background-image: url("../images/stone.jpg");
+  background-image: url("../images/rock.png");
   background-size: cover;
 }
 
 .main .layer-front .buttons button:nth-of-type(3) {
-  background-image: url("../images/shears.jpg");
+  background-image: url("../images/scissors.png");
   background-size: cover;
 }
 
